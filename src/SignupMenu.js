@@ -1,20 +1,29 @@
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
 const userURL = process.env.REACT_APP_URL+"/users"
 function SignupMenu(){
     const navigate = useNavigate()
+    const [signupText,setText] = useState("Đăng kí")
+    const [haveError,setHaveError] = useState(false)
     function signup(formData){
+        setText("Đang đăng kí ...")
         axios.post(userURL+"/signup",{
             displayName: formData.displayName.value,
             username: formData.username.value,
             password: formData.password.value
         })
             .then(res => {
+                setText("Đăng kí")
                 sessionStorage.setItem("userId",res.data.id)
                 navigate("/")
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setHaveError(true)
+                setText("Đăng kí")
+                console.log(err)
+            })
     }
     return <>
         <div className="bg-white w-full py-3 px-5 flex content-evenly">
@@ -22,6 +31,10 @@ function SignupMenu(){
         </div>
         <div className="grow flex items-center justify-center">
             <div className="bg-white w-2/3 max-w-md p-6 rounded-lg flex flex-col gap-3">
+                {haveError?<div className="w-full px-2 py-1 mt-2 bg-red-400 text-center rounded-lg">
+                    Lỗi đã xảy ra !
+                </div>
+                :<></>}
                 <form onSubmit={event => {
                     event.preventDefault()
                     signup(event.target)
@@ -43,7 +56,7 @@ function SignupMenu(){
                     focus:border-gray-500 focus:ring-1 focus:ring-gray-500 rounded-lg" type="password" name="password" required
                                placeholder="Ít nhất 6 kí tự"/>
                     </div>
-                    <button className="w-full px-2 py-1 mt-2 border border-gray-300 text-center rounded-lg" type="submit">Đăng Kí</button>
+                    <button className="w-full px-2 py-1 mt-2 border border-gray-300 text-center rounded-lg" type="submit">{signupText}</button>
                 </form>
             </div>
         </div>
