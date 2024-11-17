@@ -21,11 +21,15 @@ function CardMenu(){
     const {deckId} = useParams()
     const deckURL = process.env.REACT_APP_URL+'/decks/'+deckId
     const [cards,setCards] = useState([])
+    const [deck, setDeck] =useState({name:""})
     useEffect(() => {
+        axios.get(deckURL)
+            .then(res => setDeck(res.data))
+            .catch(err => console.log(err))
         axios.get(deckURL+"/cards")
             .then(res => setCards(res.data))
             .catch(err => console.log(err))
-    }, []);
+    }, [deckURL]);
     function addCard(formData){
         console.log(formData)
         axios.post(deckURL, {
@@ -61,6 +65,9 @@ function CardMenu(){
     }
     return (
         <div id="cardMenu" className="bg-white mx-5 w-full lg:w-2/3 p-6 rounded-lg flex flex-col gap-3">
+            <div className="flex justify-center gap-2">
+                <p className="text-center text-2xl font-bold">{deck.name}</p>
+            </div>
             {cards.map(card => <Card key={card._id} card={card} deleteCard={deleteCard}/>)}
             <form onSubmit={event => {
                 event.preventDefault()
