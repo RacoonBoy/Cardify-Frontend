@@ -30,7 +30,7 @@ function ReviewMenu(){
     useEffect(() => {
         const handleKeyPress = event => {
             if(event.key===" ") flip()
-            if(event.key==="Enter"){
+            if(event.key==="n"){
                 setFlipped(false)
                 nextCard()
             }
@@ -51,8 +51,8 @@ function ReviewMenu(){
                 </div>
             </div>
         </div>
-        <button className="bg-white w-full px-2 py-1 border border-gray-300 text-center rounded-lg" onClick={flip}>Lật</button>
-        <button className="bg-white w-full px-2 py-1 border border-gray-300 text-center rounded-lg" onClick={nextCard}>Tiếp theo</button>
+        <button className="bg-white w-full px-2 py-1 border border-gray-300 text-center rounded-lg" onClick={flip}>Lật (Dấu cách)</button>
+        <button className="bg-white w-full px-2 py-1 border border-gray-300 text-center rounded-lg" onClick={nextCard}>Tiếp theo (N)</button>
         <a href="/">
             <button className="bg-white w-full px-2 py-1 border border-gray-300 text-center rounded-lg">Kết thúc</button>
         </a>
