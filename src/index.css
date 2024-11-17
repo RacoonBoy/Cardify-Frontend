@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.background{
+    background-color: #EFEFEF;
+}
+#logo{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+.login-button{
+    border: #219EBC 1px solid;
+}
+.login-button:hover, .login-button:focus{
+    background: #219EBC;
+
+}
+#cardMenu{
+    max-height: 80%;
+    overflow-y: scroll;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+#cardMenu::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+#cardMenu {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.flip-card {
+    perspective: 1000px;
+}
+.flip-card-inner {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+/* Make the back side of the card invisible */
+.flip-card-front, .flip-card-back {
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+.flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+}
+.is-flipped{
+    transform: rotateY(180deg);
+}
