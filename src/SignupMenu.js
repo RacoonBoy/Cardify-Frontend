@@ -34,12 +34,14 @@ function SignupMenu(){
                     <div>
                         <label htmlFor="username">Tên đăng nhập</label>
                         <input className="w-full min-w-0 px-2 py-1 border border-gray-300 hover:bg-gray-100 focus:bg-gray-100
-                    focus:border-gray-500 focus:ring-1 focus:ring-gray-500 rounded-lg" name="username" required/>
+                    focus:border-gray-500 focus:ring-1 focus:ring-gray-500 rounded-lg" name="username" required
+                               placeholder="Ít nhất 6 kí tự"/>
                     </div>
                     <div>
                         <label htmlFor="password">Mật khẩu</label>
                         <input className="w-full min-w-0 px-2 py-1 border border-gray-300 hover:bg-gray-100 focus:bg-gray-100
-                    focus:border-gray-500 focus:ring-1 focus:ring-gray-500 rounded-lg" type="password" name="password" required/>
+                    focus:border-gray-500 focus:ring-1 focus:ring-gray-500 rounded-lg" type="password" name="password" required
+                               placeholder="Ít nhất 6 kí tự"/>
                     </div>
                     <button className="w-full px-2 py-1 mt-2 border border-gray-300 text-center rounded-lg" type="submit">Đăng Kí</button>
                 </form>
